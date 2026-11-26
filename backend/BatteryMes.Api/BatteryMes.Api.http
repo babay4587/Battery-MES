@@ -1,0 +1,6 @@
+@BatteryMes.Api_HostAddress = http://localhost:5002
+
+GET {{BatteryMes.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

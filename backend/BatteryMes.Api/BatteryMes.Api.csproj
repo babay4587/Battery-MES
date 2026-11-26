@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.11" />
+    <PackageReference Include="MySqlConnector" Version="3.0.0" />
+    <PackageReference Include="SqlSugarCore" Version="5.1.4.221" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\database\001_p0.sql" Link="Sql\001_p0.sql" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
