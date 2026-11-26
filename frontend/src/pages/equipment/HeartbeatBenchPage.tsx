@@ -190,16 +190,15 @@ export function HeartbeatBenchPage() {
         <div className="panel">
           <div className="panel-toolbar">
             <strong>四拍</strong>
-            {step === 4 ? (
-              <Button
-                size="small"
-                onClick={() => {
-                  setStep(0)
-                }}
-              >
-                再走一遍
-              </Button>
-            ) : null}
+            <Button
+              size="small"
+              disabled={step === 0 || busy}
+              onClick={() => {
+                setStep(0)
+              }}
+            >
+              重新开始
+            </Button>
           </div>
           <ol className="bench-steps">
             {steps.map((item) => {
