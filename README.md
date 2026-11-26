@@ -18,7 +18,7 @@
 dotnet run --project backend/BatteryMes.Api
 ```
 
-接口地址是 `http://127.0.0.1:5080`。健康检查是 `/health`。
+接口地址是 `http://127.0.0.1:7800`。健康检查是 `/health`。
 
 3. 启动页面：
 
@@ -28,7 +28,7 @@ npm install
 npm run dev
 ```
 
-打开 `http://127.0.0.1:5173`。开发环境把 `/api` 转到 5080。
+打开 `http://127.0.0.1:5173`。开发环境把 `/api` 转到 7800。
 
 初始账号 `admin`，密码 `Admin@123`。这只给本机第一次登录，上线前要改掉。
 
