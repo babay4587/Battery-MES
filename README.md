@@ -18,7 +18,7 @@
 dotnet run --project backend/BatteryMes.Api
 ```
 
-接口地址是 `http://127.0.0.1:7800`。健康检查是 `/health`。
+接口地址是 `http://127.0.0.1:7800`。先在 `frontend` 执行 `npm run build`，再启动接口，浏览器打开 `http://127.0.0.1:7800/` 就是登录页。健康检查是 `/health`。
 
 3. 启动页面：
 

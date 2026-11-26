@@ -1,5 +1,6 @@
 using System.Text;
 using BatteryMes.Api;
+using Microsoft.Extensions.FileProviders;
 using BatteryMes.Api.Auth;
 using BatteryMes.Api.Data;
 using BatteryMes.Api.Factory;
@@ -92,8 +93,38 @@ app.UseExceptionHandler(handler =>
     });
 });
 app.UseCors("frontend");
+
+var frontendDist = Path.GetFullPath(Path.Combine(app.Environment.ContentRootPath, "..", "..", "frontend", "dist"));
+PhysicalFileProvider? frontendFiles = null;
+if (Directory.Exists(frontendDist))
+{
+    frontendFiles = new PhysicalFileProvider(frontendDist);
+    app.UseDefaultFiles(new DefaultFilesOptions { FileProvider = frontendFiles });
+    app.UseStaticFiles(new StaticFileOptions { FileProvider = frontendFiles });
+}
+else
+{
+    app.Logger.LogWarning("没有找到前端构建目录 {FrontendDist}，根地址暂不提供页面", frontendDist);
+}
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.MapHealthChecks("/health");
+if (frontendFiles is not null)
+{
+    app.MapFallback(async context =>
+    {
+        var path = context.Request.Path;
+        if (path.StartsWithSegments("/api") || path.StartsWithSegments("/health"))
+        {
+            context.Response.StatusCode = StatusCodes.Status404NotFound;
+            return;
+        }
+
+        context.Response.ContentType = "text/html; charset=utf-8";
+        await context.Response.SendFileAsync(Path.Combine(frontendDist, "index.html"));
+    });
+}
+
 app.Run();
