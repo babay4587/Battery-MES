@@ -1,4 +1,5 @@
 import {
+  ApiOutlined,
   ApartmentOutlined,
   AppstoreOutlined,
   DatabaseOutlined,
@@ -93,6 +94,12 @@ export const navGroups: NavGroup[] = [
         path: '/equipment',
         hint: '设备台账和点检以后放在这里。',
         icon: ToolOutlined,
+      },
+      {
+        label: '心跳试验台',
+        path: '/heartbeat-bench',
+        hint: '按四拍看设备心跳怎样领走一条控机。',
+        icon: ApiOutlined,
       },
     ],
   },

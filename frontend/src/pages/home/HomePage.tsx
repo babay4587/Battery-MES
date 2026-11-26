@@ -5,7 +5,7 @@ export function HomePage() {
   return (
     <section>
       <h1 className="page-title">应用大厅</h1>
-      <p className="page-hint">业务模型可以维护工厂树。其余入口仍是占位。</p>
+      <p className="page-hint">业务模型可以维护工厂树。心跳试验台可以按四拍看设备怎样领走控机。其余入口仍是占位。</p>
       <div className="app-grid">
         {navGroups.flatMap((group) =>
           group.items.map((item) => {

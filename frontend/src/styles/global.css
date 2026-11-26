@@ -407,6 +407,119 @@ select:focus-visible {
   align-items: start;
 }
 
+.bench-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(220px, 280px) minmax(260px, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+.bench-layout .page-hint {
+  margin-bottom: 12px;
+}
+
+.bench-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bench-steps li {
+  margin-bottom: 12px;
+}
+
+.bench-steps button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #dce2e1;
+  background: #f8f9f9;
+  color: #52645c;
+  border-radius: 3px;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.bench-steps button span {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #dce2e1;
+  color: #2d3e38;
+  flex-shrink: 0;
+}
+
+.bench-steps li.ready button {
+  border-color: #347b75;
+  background: #fff;
+  color: #2d3e38;
+}
+
+.bench-steps li.ready button span,
+.bench-steps li.done button span {
+  background: #347b75;
+  color: #fff;
+}
+
+.bench-steps li.done button {
+  border-color: #c5ddd8;
+  background: #e8f1ef;
+  color: #347b75;
+}
+
+.bench-steps button:disabled {
+  cursor: default;
+}
+
+.bench-steps p {
+  margin: 6px 0 0;
+  color: #52645c;
+  font-size: 12px;
+}
+
+.bench-log {
+  margin-top: 16px;
+}
+
+.bench-beat {
+  border-top: 1px solid #dce2e1;
+  padding-top: 12px;
+  margin-top: 12px;
+}
+
+.bench-beat header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bench-beat header span {
+  color: #52645c;
+  font-size: 12px;
+}
+
+.bench-beat.pass header strong {
+  color: #347b75;
+}
+
+.bench-beat.fail header strong {
+  color: #a33b32;
+}
+
+.bench-beat pre {
+  margin: 8px 0 0;
+  padding: 12px;
+  overflow: auto;
+  background: #f8f9f9;
+  border-radius: 3px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 .panel {
   background: #fff;
   border: 1px solid #dce2e1;
@@ -491,7 +604,8 @@ select:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .factory-layout {
+  .factory-layout,
+  .bench-layout {
     grid-template-columns: 1fr;
   }
 }

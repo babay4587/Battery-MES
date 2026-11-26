@@ -34,6 +34,7 @@ builder.Services.AddSingleton<ISqlSugarClient>(_ => new SqlSugarClient(new Conne
 builder.Services.AddSingleton<JwtTokenService>();
 builder.Services.AddScoped<FactoryModelService>();
 builder.Services.AddScoped<HeartBeatService>();
+builder.Services.AddScoped<HeartbeatBenchService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {

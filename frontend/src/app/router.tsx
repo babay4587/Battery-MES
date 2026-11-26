@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom'
 import { RequireAuth } from './RequireAuth'
 import { AppShell } from '../layouts/AppShell'
 import { FactoryModelPage } from '../pages/factory/FactoryModelPage'
+import { HeartbeatBenchPage } from '../pages/equipment/HeartbeatBenchPage'
 import { HomePage } from '../pages/home/HomePage'
 import { LoginPage } from '../pages/login/LoginPage'
 import { PlaceholderPage } from '../pages/PlaceholderPage'
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
       { path: 'material', element: place('/material') },
       { path: 'quality', element: place('/quality') },
       { path: 'equipment', element: place('/equipment') },
+      { path: 'heartbeat-bench', element: <HeartbeatBenchPage /> },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },
