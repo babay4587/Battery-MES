@@ -7,7 +7,7 @@
 - 浏览器外壳：应用大厅和侧栏。业务模型页可以维护工厂树（企业、基地、车间、工段、设备、工位）。
 - 登录使用自己的用户表和 JWT。初始角色 `MES_ADMIN`。还没有页面按钮级权限。
 - 工厂数据在 `FM_LEVEL`、`FM_NODE`。视图 `V_FACTORY_MODEL` 给出原来业务会用到的 `NID`、`NAME`、`LEVEL_NID`、`PNID`。
-- 设备心跳 `POST /api/CZ2Mes/HeartBeat` 这一步先不实现。
+- 设备心跳 `POST /api/CZ2Mes/HeartBeat` 已按滁州报文重写：设备只报上位机名和设备号，待下发内容由这一拍回包带走。领走后不把空闲号设回去。
 
 ## 本机运行
 

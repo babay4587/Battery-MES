@@ -3,6 +3,7 @@ using BatteryMes.Api;
 using Microsoft.Extensions.FileProviders;
 using BatteryMes.Api.Auth;
 using BatteryMes.Api.Data;
+using BatteryMes.Api.Equipment;
 using BatteryMes.Api.Factory;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
@@ -32,6 +33,7 @@ builder.Services.AddSingleton<ISqlSugarClient>(_ => new SqlSugarClient(new Conne
 }));
 builder.Services.AddSingleton<JwtTokenService>();
 builder.Services.AddScoped<FactoryModelService>();
+builder.Services.AddScoped<HeartBeatService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {

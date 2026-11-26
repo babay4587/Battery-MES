@@ -22,15 +22,18 @@ public static class DatabaseBootstrap
             ?? throw new InvalidOperationException("缺少 ConnectionStrings:MySql");
         CreateDatabase(connectionString);
 
-        var sqlPath = Path.Combine(AppContext.BaseDirectory, "Sql", "001_p0.sql");
-        if (!File.Exists(sqlPath))
+        var sqlDirectory = Path.Combine(AppContext.BaseDirectory, "Sql");
+        if (!Directory.Exists(sqlDirectory))
         {
-            throw new InvalidOperationException($"找不到建表脚本 {sqlPath}");
+            throw new InvalidOperationException($"找不到建表脚本目录 {sqlDirectory}");
         }
 
-        foreach (var statement in SplitStatements(File.ReadAllText(sqlPath)))
+        foreach (var sqlPath in Directory.GetFiles(sqlDirectory, "*.sql").OrderBy(Path.GetFileName, StringComparer.Ordinal))
         {
-            db.Ado.ExecuteCommand(statement);
+            foreach (var statement in SplitStatements(File.ReadAllText(sqlPath)))
+            {
+                db.Ado.ExecuteCommand(statement);
+            }
         }
 
         SeedLevels(db);
