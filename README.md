@@ -11,7 +11,7 @@
 
 ## 本机运行
 
-1. 本机 MySQL 8。编辑 `backend/BatteryMes.Api/appsettings.Development.json`，把连接串里的 `Password=` 填成你的密码。库名用 `battery_mes`，程序启动时会建库、建表，并在没有管理员时写入初始账号。
+1. 开发库在 `192.168.2.26` 的 MySQL 8.0.32，库名 `battery_mes`。连接串在 `backend/BatteryMes.Api/appsettings.Development.json`。程序启动时会补齐表，并在没有管理员时写入初始账号。
 2. 启动接口：
 
 ```bash
