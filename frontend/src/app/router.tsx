@@ -22,6 +22,12 @@ const benchPaths: Record<string, string> = {
   EqptCtrl: 'bench/eqpt-ctrl',
   ChannelCtrlFeedback: 'bench/channel-feedback',
   EquipControl: 'bench/equip-control',
+  MaterialLoad: 'bench/material-load',
+  MaterialUnload: 'bench/material-unload',
+  PartLoad: 'bench/part-load',
+  PartUnLoad: 'bench/part-unload',
+  PartLife: 'bench/part-life',
+  MaterialCheck: 'bench/material-check',
 }
 
 function benchPath(title: string) {

@@ -7,7 +7,7 @@ namespace BatteryMes.Api.Controllers;
 [ApiController]
 [AllowAnonymous]
 [Route("api/CZ2Mes")]
-public sealed class CZ2MesController(HeartBeatService heartbeats, EquipmentStatusService equipment) : ControllerBase
+public sealed class CZ2MesController(HeartBeatService heartbeats, EquipmentStatusService equipment, MaterialHandlingService material) : ControllerBase
 {
     [HttpPost("HeartBeat")]
     public IActionResult HeartBeat([FromBody] HeartBeatRequest? request)
@@ -61,5 +61,41 @@ public sealed class CZ2MesController(HeartBeatService heartbeats, EquipmentStatu
     public IActionResult EquipControl([FromBody] List<EquipControlItem>? equipmentInfos)
     {
         return new JsonResult(equipment.EquipControl(equipmentInfos), HeartbeatJson.Options);
+    }
+
+    [HttpPost("MaterialLoad")]
+    public IActionResult MaterialLoad([FromBody] MaterialLoadRequest? request)
+    {
+        return new JsonResult(material.MaterialLoad(request), HeartbeatJson.Options);
+    }
+
+    [HttpPost("MaterialUnload")]
+    public IActionResult MaterialUnload([FromBody] MaterialUnloadRequest? request)
+    {
+        return new JsonResult(material.MaterialUnload(request), HeartbeatJson.Options);
+    }
+
+    [HttpPost("PartLoad")]
+    public IActionResult PartLoad([FromBody] PartLoadRequest? request)
+    {
+        return new JsonResult(material.PartLoad(request), HeartbeatJson.Options);
+    }
+
+    [HttpPost("PartUnLoad")]
+    public IActionResult PartUnLoad([FromBody] PartUnloadRequest? request)
+    {
+        return new JsonResult(material.PartUnload(request), HeartbeatJson.Options);
+    }
+
+    [HttpPost("PartLife")]
+    public IActionResult PartLife([FromBody] PartLifeRequest? request)
+    {
+        return new JsonResult(material.PartLife(request), HeartbeatJson.Options);
+    }
+
+    [HttpPost("MaterialCheck")]
+    public IActionResult MaterialCheck([FromBody] MaterialCheckRequest? request)
+    {
+        return new JsonResult(material.MaterialCheck(request), HeartbeatJson.Options);
     }
 }

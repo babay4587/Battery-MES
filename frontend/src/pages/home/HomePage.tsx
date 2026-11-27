@@ -9,7 +9,7 @@ export function HomePage() {
   return (
     <section>
       <h1 className="page-title">应用大厅</h1>
-      <p className="page-hint">业务模型可以维护工厂树。现场里的试验台可以手动发送心跳和设备状态报文。其余入口仍是占位。</p>
+      <p className="page-hint">业务模型可以维护工厂树。现场里的试验台可以手动发送心跳、设备状态、上下料和寿命报文。其余入口仍是占位。</p>
       <div className="app-grid">
         {navGroups.flatMap((group) =>
           cards(group.items).map((item) => {

@@ -36,6 +36,7 @@ builder.Services.AddScoped<FactoryModelService>();
 builder.Services.AddScoped<HeartBeatService>();
 builder.Services.AddScoped<HeartbeatBenchService>();
 builder.Services.AddScoped<EquipmentStatusService>();
+builder.Services.AddScoped<MaterialHandlingService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
