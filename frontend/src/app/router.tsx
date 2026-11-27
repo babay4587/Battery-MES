@@ -2,6 +2,8 @@ import { createBrowserRouter, Navigate } from 'react-router-dom'
 import { RequireAuth } from './RequireAuth'
 import { AppShell } from '../layouts/AppShell'
 import { FactoryModelPage } from '../pages/factory/FactoryModelPage'
+import { ActionBenchPage } from '../pages/equipment/ActionBenchPage'
+import { actionBenches } from '../pages/equipment/actionBenches'
 import { HeartbeatBenchPage } from '../pages/equipment/HeartbeatBenchPage'
 import { HomePage } from '../pages/home/HomePage'
 import { LoginPage } from '../pages/login/LoginPage'
@@ -9,6 +11,21 @@ import { PlaceholderPage } from '../pages/PlaceholderPage'
 
 function place(pathname: string) {
   return <PlaceholderPage pathname={pathname} />
+}
+
+const benchPaths: Record<string, string> = {
+  ClearEquipHeartBeatStatus: 'bench/clear-heartbeat',
+  EquipStatus: 'bench/equip-status',
+  EquipAlert: 'bench/equip-alert',
+  EquipRunRequest: 'bench/equip-run',
+  EqptParaCHNG: 'bench/eqpt-para',
+  EqptCtrl: 'bench/eqpt-ctrl',
+  ChannelCtrlFeedback: 'bench/channel-feedback',
+  EquipControl: 'bench/equip-control',
+}
+
+function benchPath(title: string) {
+  return benchPaths[title] ?? 'bench/heartbeat'
 }
 
 export const router = createBrowserRouter([
@@ -30,7 +47,12 @@ export const router = createBrowserRouter([
       { path: 'material', element: place('/material') },
       { path: 'quality', element: place('/quality') },
       { path: 'equipment', element: place('/equipment') },
-      { path: 'heartbeat-bench', element: <HeartbeatBenchPage /> },
+      { path: 'heartbeat-bench', element: <Navigate to="/bench/heartbeat" replace /> },
+      { path: 'bench/heartbeat', element: <HeartbeatBenchPage /> },
+      ...actionBenches.map((config) => ({
+        path: benchPath(config.title),
+        element: <ActionBenchPage key={config.title} config={config} />,
+      })),
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

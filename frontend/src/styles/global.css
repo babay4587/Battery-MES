@@ -201,6 +201,16 @@ select:focus-visible {
   letter-spacing: 0.5px;
 }
 
+.side-sub {
+  margin: 4px 12px 4px 22px;
+  color: #347b75;
+  font-size: 12px;
+}
+
+.side-child {
+  padding-left: 22px;
+}
+
 .side-item {
   width: 100%;
   display: flex;
@@ -342,6 +352,7 @@ select:focus-visible {
 
 .workspace.collapsed .side-label,
 .workspace.collapsed .side-group,
+.workspace.collapsed .side-sub,
 .workspace.collapsed .side-footer span {
   display: none;
 }
@@ -413,6 +424,10 @@ select:focus-visible {
   gap: 16px;
   margin-top: 16px;
   align-items: start;
+}
+
+.bench-two {
+  grid-template-columns: minmax(280px, 420px) minmax(0, 1fr);
 }
 
 .bench-layout .page-hint {
@@ -510,7 +525,8 @@ select:focus-visible {
   color: #a33b32;
 }
 
-.bench-beat pre {
+.bench-beat pre,
+.bench-inline {
   margin: 8px 0 0;
   padding: 12px;
   overflow: auto;
@@ -518,6 +534,10 @@ select:focus-visible {
   border-radius: 3px;
   font-size: 12px;
   line-height: 1.5;
+}
+
+.bench-gap {
+  margin-top: 16px;
 }
 
 .panel {
@@ -587,6 +607,7 @@ select:focus-visible {
 
   .side-label,
   .side-group,
+  .side-sub,
   .side-footer span {
     display: none;
   }

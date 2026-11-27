@@ -16,9 +16,10 @@ export type NavIcon = ComponentType<{ className?: string }>
 
 export type NavItem = {
   label: string
-  path: string
+  path?: string
   hint: string
   icon: NavIcon
+  children?: NavItem[]
 }
 
 export type NavGroup = {
@@ -96,16 +97,74 @@ export const navGroups: NavGroup[] = [
         icon: ToolOutlined,
       },
       {
-        label: '心跳试验台',
-        path: '/heartbeat-bench',
-        hint: '按四拍看设备心跳怎样领走一条控机。',
+        label: '试验台',
+        hint: '手动发送设备报文，看 MES 回包和库里的结果。',
         icon: ApiOutlined,
+        children: [
+          {
+            label: '心跳试验台',
+            path: '/bench/heartbeat',
+            hint: '按四拍看设备心跳怎样领走一条控机。',
+            icon: ApiOutlined,
+          },
+          {
+            label: '清理心跳状态',
+            path: '/bench/clear-heartbeat',
+            hint: 'ClearEquipHeartBeatStatus',
+            icon: ApiOutlined,
+          },
+          {
+            label: '设备状态',
+            path: '/bench/equip-status',
+            hint: 'EquipStatus',
+            icon: ApiOutlined,
+          },
+          {
+            label: '设备报警',
+            path: '/bench/equip-alert',
+            hint: 'EquipAlert',
+            icon: ApiOutlined,
+          },
+          {
+            label: '运行请求',
+            path: '/bench/equip-run',
+            hint: 'EquipRunRequest',
+            icon: ApiOutlined,
+          },
+          {
+            label: '参数变更',
+            path: '/bench/eqpt-para',
+            hint: 'EqptParaCHNG',
+            icon: ApiOutlined,
+          },
+          {
+            label: '控机反馈',
+            path: '/bench/eqpt-ctrl',
+            hint: 'EqptCtrl',
+            icon: ApiOutlined,
+          },
+          {
+            label: '通道启停反馈',
+            path: '/bench/channel-feedback',
+            hint: 'ChannelCtrlFeedback',
+            icon: ApiOutlined,
+          },
+          {
+            label: '控机入队',
+            path: '/bench/equip-control',
+            hint: 'EquipControl',
+            icon: ApiOutlined,
+          },
+        ],
       },
     ],
   },
 ]
 
-export const allNavItems: NavItem[] = [homeNav, ...navGroups.flatMap((group) => group.items)]
+export const allNavItems: NavItem[] = [
+  homeNav,
+  ...navGroups.flatMap((group) => group.items.flatMap((item) => [item, ...(item.children ?? [])])),
+]
 
 export function findNavItem(pathname: string): NavItem {
   if (pathname === '/') return homeNav

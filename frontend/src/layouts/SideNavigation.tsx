@@ -3,13 +3,13 @@ import { NavLink } from 'react-router-dom'
 import { homeNav, navGroups, type NavItem } from '../app/navigation'
 import { useUiStore } from '../stores/uiStore'
 
-function NavItemLink({ item, end = false }: { item: NavItem; end?: boolean }) {
+function NavItemLink({ item, end = false, nested = false }: { item: NavItem; end?: boolean; nested?: boolean }) {
   const Icon = item.icon
   return (
     <NavLink
-      to={item.path}
+      to={item.path ?? '/'}
       end={end}
-      className={({ isActive }) => `side-item${isActive ? ' active' : ''}`}
+      className={({ isActive }) => `side-item${nested ? ' side-child' : ''}${isActive ? ' active' : ''}`}
       aria-label={item.label}
     >
       <Icon />
@@ -40,9 +40,18 @@ export function SideNavigation() {
         {navGroups.map((group) => (
           <div key={group.title}>
             <div className="side-group">{group.title}</div>
-            {group.items.map((item) => (
-              <NavItemLink key={item.path} item={item} />
-            ))}
+            {group.items.map((item) =>
+              item.children ? (
+                <div key={item.label}>
+                  <div className="side-sub">{item.label}</div>
+                  {item.children.map((child) => (
+                    <NavItemLink key={child.path} item={child} nested />
+                  ))}
+                </div>
+              ) : (
+                <NavItemLink key={item.path} item={item} />
+              ),
+            )}
           </div>
         ))}
       </div>

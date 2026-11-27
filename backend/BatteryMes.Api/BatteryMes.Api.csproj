@@ -15,6 +15,7 @@
   <ItemGroup>
     <None Include="..\..\database\001_p0.sql" Link="Sql\001_p0.sql" CopyToOutputDirectory="PreserveNewest" />
     <None Include="..\..\database\002_heartbeat.sql" Link="Sql\002_heartbeat.sql" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\database\003_equipment_status.sql" Link="Sql\003_equipment_status.sql" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

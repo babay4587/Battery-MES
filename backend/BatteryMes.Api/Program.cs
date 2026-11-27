@@ -35,6 +35,7 @@ builder.Services.AddSingleton<JwtTokenService>();
 builder.Services.AddScoped<FactoryModelService>();
 builder.Services.AddScoped<HeartBeatService>();
 builder.Services.AddScoped<HeartbeatBenchService>();
+builder.Services.AddScoped<EquipmentStatusService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
